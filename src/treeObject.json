@@ -1,0 +1,534 @@
+[
+    {
+        "slug": "arboles-pre-feria",
+        "title": "Arvores",
+        "type": "collection",
+        "_id": "4u9TDJiAp7arvEd5C",
+        "tag": "",
+        "thumbs": [],
+        "images": [],
+        "brands": [
+            {
+                "label": "Santini Christmas future",
+                "brandId": "tyJbdXkZCercBFmnK-santini",
+                "value": "tyJbdXkZCercBFmnK-santini|future",
+                "type": "future"
+            },
+            {
+                "label": "Santini Christmas direct",
+                "brandId": "tyJbdXkZCercBFmnK-santini",
+                "value": "tyJbdXkZCercBFmnK-santini|direct",
+                "type": "direct"
+            },
+            {
+                "label": "Santini Christmas inventory",
+                "brandId": "tyJbdXkZCercBFmnK-santini",
+                "value": "tyJbdXkZCercBFmnK-santini|inventory",
+                "type": "inventory"
+            }
+        ],
+        "expanded": true,
+        "children": [
+            {
+                "title": "Arvores",
+                "tag": "",
+                "thumbs": [],
+                "images": [],
+                "brands": [
+                    {
+                        "label": "Santini Christmas future",
+                        "brandId": "tyJbdXkZCercBFmnK-santini",
+                        "value": "tyJbdXkZCercBFmnK-santini|future",
+                        "type": "future"
+                    },
+                    {
+                        "label": "Santini Christmas direct",
+                        "brandId": "tyJbdXkZCercBFmnK-santini",
+                        "value": "tyJbdXkZCercBFmnK-santini|direct",
+                        "type": "direct"
+                    },
+                    {
+                        "label": "Santini Christmas inventory",
+                        "brandId": "tyJbdXkZCercBFmnK-santini",
+                        "value": "tyJbdXkZCercBFmnK-santini|inventory",
+                        "type": "inventory"
+                    }
+                ],
+                "expanded": true,
+                "children": [
+                    {
+                        "slug": "arboles-pre-feria",
+                        "title": "Árvores de Natal",
+                        "type": "collection",
+                        "_id": "4u9TDJiAp7arvEd5C",
+                        "tag": "inventario,feria",
+                        "thumbs": [],
+                        "images": [],
+                        "brands": []
+                    },
+                    {
+                        "slug": "bolas-inventario",
+                        "title": "Bolas de Natal",
+                        "type": "collection",
+                        "_id": "vR37Sk8k4JLDzsANo",
+                        "tag": "inventario,navidad",
+                        "thumbs": [],
+                        "images": [],
+                        "brands": [
+                            {
+                                "label": "Santini Christmas future",
+                                "brandId": "tyJbdXkZCercBFmnK-santini",
+                                "value": "tyJbdXkZCercBFmnK-santini|future",
+                                "type": "future"
+                            },
+                            {
+                                "label": "Santini Christmas direct",
+                                "brandId": "tyJbdXkZCercBFmnK-santini",
+                                "value": "tyJbdXkZCercBFmnK-santini|direct",
+                                "type": "direct"
+                            },
+                            {
+                                "label": "Santini Christmas inventory",
+                                "brandId": "tyJbdXkZCercBFmnK-santini",
+                                "value": "tyJbdXkZCercBFmnK-santini|inventory",
+                                "type": "inventory"
+                            }
+                        ]
+                    },
+                    {
+                        "slug": "adornos-arbol",
+                        "title": "Enfeites de Árvores",
+                        "type": "collection",
+                        "_id": "x4ZqwuJsRk6zY5ZFb",
+                        "tag": "inventario,navidad",
+                        "thumbs": [],
+                        "images": [],
+                        "brands": [],
+                        "expanded": true
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "slug": "figuras-navideñas-todos",
+        "title": "Figuras e Bonecos",
+        "type": "collection",
+        "_id": "W7HxTkZ5HSvtYX363",
+        "tag": "navidad,inventario",
+        "thumbs": [],
+        "images": [],
+        "brands": [
+            {
+                "label": "Santini Christmas future",
+                "brandId": "tyJbdXkZCercBFmnK-santini",
+                "value": "tyJbdXkZCercBFmnK-santini|future",
+                "type": "future"
+            },
+            {
+                "label": "Santini Christmas direct",
+                "brandId": "tyJbdXkZCercBFmnK-santini",
+                "value": "tyJbdXkZCercBFmnK-santini|direct",
+                "type": "direct"
+            },
+            {
+                "label": "Santini Christmas inventory",
+                "brandId": "tyJbdXkZCercBFmnK-santini",
+                "value": "tyJbdXkZCercBFmnK-santini|inventory",
+                "type": "inventory"
+            }
+        ],
+        "expanded": true,
+        "children": [
+            {
+                "slug": "figuras-todas",
+                "title": "Figuras e Bonecos",
+                "type": "collection",
+                "_id": "NXeS9iiu24oJ8hd2s",
+                "tag": "navidad,inventario",
+                "thumbs": [],
+                "images": [],
+                "brands": [
+                    {
+                        "label": "Santini Christmas future",
+                        "brandId": "tyJbdXkZCercBFmnK-santini",
+                        "value": "tyJbdXkZCercBFmnK-santini|future",
+                        "type": "future"
+                    },
+                    {
+                        "label": "Santini Christmas direct",
+                        "brandId": "tyJbdXkZCercBFmnK-santini",
+                        "value": "tyJbdXkZCercBFmnK-santini|direct",
+                        "type": "direct"
+                    },
+                    {
+                        "label": "Santini Christmas inventory",
+                        "brandId": "tyJbdXkZCercBFmnK-santini",
+                        "value": "tyJbdXkZCercBFmnK-santini|inventory",
+                        "type": "inventory"
+                    }
+                ],
+                "expanded": true,
+                "children": [
+                    {
+                        "slug": "figuras-navideñas-todos",
+                        "title": "Bonecos de Natal",
+                        "type": "collection",
+                        "_id": "W7HxTkZ5HSvtYX363",
+                        "tag": "navidad,inventario",
+                        "expanded": true,
+                        "children": [],
+                        "thumbs": [],
+                        "images": [],
+                        "brands": [
+                            {
+                                "label": "Santini Christmas future",
+                                "brandId": "tyJbdXkZCercBFmnK-santini",
+                                "value": "tyJbdXkZCercBFmnK-santini|future",
+                                "type": "future"
+                            },
+                            {
+                                "label": "Santini Christmas direct",
+                                "brandId": "tyJbdXkZCercBFmnK-santini",
+                                "value": "tyJbdXkZCercBFmnK-santini|direct",
+                                "type": "direct"
+                            },
+                            {
+                                "label": "Santini Christmas inventory",
+                                "brandId": "tyJbdXkZCercBFmnK-santini",
+                                "value": "tyJbdXkZCercBFmnK-santini|inventory",
+                                "type": "inventory"
+                            }
+                        ]
+                    },
+                    {
+                        "slug": "muñecos-animados",
+                        "title": "Bonecos com Movimento",
+                        "type": "collection",
+                        "_id": "CvfNNkXLDu5K3Wzgm",
+                        "tag": "navidad,inventario",
+                        "thumbs": [],
+                        "images": [],
+                        "brands": [
+                            {
+                                "label": "Santini Christmas future",
+                                "brandId": "tyJbdXkZCercBFmnK-santini",
+                                "value": "tyJbdXkZCercBFmnK-santini|future",
+                                "type": "future"
+                            },
+                            {
+                                "label": "Santini Christmas direct",
+                                "brandId": "tyJbdXkZCercBFmnK-santini",
+                                "value": "tyJbdXkZCercBFmnK-santini|direct",
+                                "type": "direct"
+                            },
+                            {
+                                "label": "Santini Christmas inventory",
+                                "brandId": "tyJbdXkZCercBFmnK-santini",
+                                "value": "tyJbdXkZCercBFmnK-santini|inventory",
+                                "type": "inventory"
+                            }
+                        ]
+                    },
+                    {
+                        "slug": "nacimientos-todos",
+                        "title": "Presépios",
+                        "type": "collection",
+                        "_id": "hnzDEqMxQbAdkyfre",
+                        "tag": "navidad,inventario",
+                        "expanded": true,
+                        "children": [],
+                        "thumbs": [],
+                        "images": [],
+                        "brands": []
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "slug": "navidad",
+        "title": "Decoração de Natal",
+        "type": "collection",
+        "_id": "Zd6Tx53t8oNNhcp2e",
+        "tag": "inventario,navidad",
+        "thumbs": [],
+        "images": [],
+        "brands": [
+            {
+                "label": "Santini Christmas future",
+                "brandId": "tyJbdXkZCercBFmnK-santini",
+                "value": "tyJbdXkZCercBFmnK-santini|future",
+                "type": "future"
+            },
+            {
+                "label": "Santini Christmas direct",
+                "brandId": "tyJbdXkZCercBFmnK-santini",
+                "value": "tyJbdXkZCercBFmnK-santini|direct",
+                "type": "direct"
+            },
+            {
+                "label": "Santini Christmas inventory",
+                "brandId": "tyJbdXkZCercBFmnK-santini",
+                "value": "tyJbdXkZCercBFmnK-santini|inventory",
+                "type": "inventory"
+            }
+        ],
+        "expanded": true,
+        "children": [
+            {
+                "slug": "navidad",
+                "title": "Decoração de Natal",
+                "type": "collection",
+                "_id": "Zd6Tx53t8oNNhcp2e",
+                "tag": "navidad,inventario",
+                "thumbs": [],
+                "images": [],
+                "brands": [
+                    {
+                        "label": "Santini Christmas future",
+                        "brandId": "tyJbdXkZCercBFmnK-santini",
+                        "value": "tyJbdXkZCercBFmnK-santini|future",
+                        "type": "future"
+                    },
+                    {
+                        "label": "Santini Christmas direct",
+                        "brandId": "tyJbdXkZCercBFmnK-santini",
+                        "value": "tyJbdXkZCercBFmnK-santini|direct",
+                        "type": "direct"
+                    },
+                    {
+                        "label": "Santini Christmas inventory",
+                        "brandId": "tyJbdXkZCercBFmnK-santini",
+                        "value": "tyJbdXkZCercBFmnK-santini|inventory",
+                        "type": "inventory"
+                    }
+                ],
+                "expanded": true,
+                "children": [
+                    {
+                        "slug": "country",
+                        "title": "Country",
+                        "type": "collection",
+                        "_id": "ra8eDXgBqMYSCbaRS",
+                        "tag": "navidad,inventario"
+                    },
+                    {
+                        "slug": "flores-y-plantas-todos",
+                        "title": "Flores e Plantas",
+                        "type": "collection",
+                        "_id": "fWyNZiphRJmQoEkPp",
+                        "tag": "navidad,inventario",
+                        "expanded": true,
+                        "thumbs": [],
+                        "images": [],
+                        "brands": [
+                            {
+                                "label": "Santini Christmas future",
+                                "brandId": "tyJbdXkZCercBFmnK-santini",
+                                "value": "tyJbdXkZCercBFmnK-santini|future",
+                                "type": "future"
+                            },
+                            {
+                                "label": "Santini Christmas direct",
+                                "brandId": "tyJbdXkZCercBFmnK-santini",
+                                "value": "tyJbdXkZCercBFmnK-santini|direct",
+                                "type": "direct"
+                            },
+                            {
+                                "label": "Santini Christmas inventory",
+                                "brandId": "tyJbdXkZCercBFmnK-santini",
+                                "value": "tyJbdXkZCercBFmnK-santini|inventory",
+                                "type": "inventory"
+                            }
+                        ]
+                    },
+                    {
+                        "slug": "home-decor-christmas",
+                        "title": "Home Decor Christmas",
+                        "type": "collection",
+                        "_id": "ifdPj8u6QW4YCbd7G",
+                        "tag": "navidad,inventario",
+                        "expanded": true
+                    },
+                    {
+                        "slug": "luces",
+                        "title": "Luzes",
+                        "type": "collection",
+                        "_id": "GnzembWjcZSCMnkJC",
+                        "tag": "navidad,inventario",
+                        "expanded": true,
+                        "thumbs": [],
+                        "images": [],
+                        "brands": [
+                            {
+                                "label": "Santini Christmas future",
+                                "brandId": "tyJbdXkZCercBFmnK-santini",
+                                "value": "tyJbdXkZCercBFmnK-santini|future",
+                                "type": "future"
+                            },
+                            {
+                                "label": "Santini Christmas direct",
+                                "brandId": "tyJbdXkZCercBFmnK-santini",
+                                "value": "tyJbdXkZCercBFmnK-santini|direct",
+                                "type": "direct"
+                            },
+                            {
+                                "label": "Santini Christmas inventory",
+                                "brandId": "tyJbdXkZCercBFmnK-santini",
+                                "value": "tyJbdXkZCercBFmnK-santini|inventory",
+                                "type": "inventory"
+                            }
+                        ]
+                    },
+                    {
+                        "slug": "textil-navidad",
+                        "title": "Têxtil de Natal",
+                        "type": "collection",
+                        "_id": "NTng8KgWMXyHtnEms",
+                        "tag": "navidad,inventario",
+                        "expanded": true,
+                        "thumbs": [],
+                        "images": [],
+                        "brands": [
+                            {
+                                "label": "Santini Christmas future",
+                                "brandId": "tyJbdXkZCercBFmnK-santini",
+                                "value": "tyJbdXkZCercBFmnK-santini|future",
+                                "type": "future"
+                            },
+                            {
+                                "label": "Santini Christmas direct",
+                                "brandId": "tyJbdXkZCercBFmnK-santini",
+                                "value": "tyJbdXkZCercBFmnK-santini|direct",
+                                "type": "direct"
+                            },
+                            {
+                                "label": "Santini Christmas inventory",
+                                "brandId": "tyJbdXkZCercBFmnK-santini",
+                                "value": "tyJbdXkZCercBFmnK-santini|inventory",
+                                "type": "inventory"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "slug": "cintas-y-mallas-navidad",
+        "title": "Fitas e Meias",
+        "type": "collection",
+        "_id": "ieiMzypSDmKLqGEPJ",
+        "tag": "navidad,inventario",
+        "thumbs": [],
+        "images": [],
+        "brands": [
+            {
+                "label": "Santini Christmas future",
+                "brandId": "tyJbdXkZCercBFmnK-santini",
+                "value": "tyJbdXkZCercBFmnK-santini|future",
+                "type": "future"
+            },
+            {
+                "label": "Santini Christmas direct",
+                "brandId": "tyJbdXkZCercBFmnK-santini",
+                "value": "tyJbdXkZCercBFmnK-santini|direct",
+                "type": "direct"
+            },
+            {
+                "label": "Santini Christmas inventory",
+                "brandId": "tyJbdXkZCercBFmnK-santini",
+                "value": "tyJbdXkZCercBFmnK-santini|inventory",
+                "type": "inventory"
+            }
+        ]
+    },
+    {
+        "slug": "mesa-y-cocina-navidad",
+        "title": "Mesa e Cozinha",
+        "type": "collection",
+        "_id": "7SNrwCrKkQdJYFs9m",
+        "tag": "navidad,inventario",
+        "thumbs": [],
+        "images": [],
+        "brands": [
+            {
+                "label": "Santini Christmas future",
+                "brandId": "tyJbdXkZCercBFmnK-santini",
+                "value": "tyJbdXkZCercBFmnK-santini|future",
+                "type": "future"
+            },
+            {
+                "label": "Santini Christmas direct",
+                "brandId": "tyJbdXkZCercBFmnK-santini",
+                "value": "tyJbdXkZCercBFmnK-santini|direct",
+                "type": "direct"
+            },
+            {
+                "label": "Santini Christmas inventory",
+                "brandId": "tyJbdXkZCercBFmnK-santini",
+                "value": "tyJbdXkZCercBFmnK-santini|inventory",
+                "type": "inventory"
+            }
+        ]
+    },
+    {
+        "slug": "exterior",
+        "title": "Ar livre",
+        "type": "collection",
+        "_id": "g3taSccbTpeuBYTWp",
+        "tag": "navidad,inventario",
+        "thumbs": [],
+        "images": [],
+        "brands": [
+            {
+                "label": "Santini Christmas future",
+                "brandId": "tyJbdXkZCercBFmnK-santini",
+                "value": "tyJbdXkZCercBFmnK-santini|future",
+                "type": "future"
+            },
+            {
+                "label": "Santini Christmas direct",
+                "brandId": "tyJbdXkZCercBFmnK-santini",
+                "value": "tyJbdXkZCercBFmnK-santini|direct",
+                "type": "direct"
+            },
+            {
+                "label": "Santini Christmas inventory",
+                "brandId": "tyJbdXkZCercBFmnK-santini",
+                "value": "tyJbdXkZCercBFmnK-santini|inventory",
+                "type": "inventory"
+            }
+        ]
+    },
+    {
+        "slug": "baño-navidad",
+        "title": "Banheiro",
+        "type": "collection",
+        "_id": "htYX8kDNFbWsBjZAp",
+        "tag": "navidad,inventario",
+        "thumbs": [],
+        "images": [],
+        "brands": [
+            {
+                "label": "Santini Christmas future",
+                "brandId": "tyJbdXkZCercBFmnK-santini",
+                "value": "tyJbdXkZCercBFmnK-santini|future",
+                "type": "future"
+            },
+            {
+                "label": "Santini Christmas direct",
+                "brandId": "tyJbdXkZCercBFmnK-santini",
+                "value": "tyJbdXkZCercBFmnK-santini|direct",
+                "type": "direct"
+            },
+            {
+                "label": "Santini Christmas inventory",
+                "brandId": "tyJbdXkZCercBFmnK-santini",
+                "value": "tyJbdXkZCercBFmnK-santini|inventory",
+                "type": "inventory"
+            }
+        ]
+    }
+]
