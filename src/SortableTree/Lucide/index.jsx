@@ -3,6 +3,12 @@ import { Plus } from 'lucide-react';
 import { TreeNode } from './TreeNode.jsx';
 import { findNodeById, removeNode, addChildToNode } from './utils.js';
 
+/**
+ * TODO: 
+ * - [ ] Poder sacar a la raiz
+ * - [ ] normalizar la id de busqueda
+ * 
+ */
 
 
 export default function SortableTree({treeData, setTreeData}) {
@@ -10,13 +16,13 @@ export default function SortableTree({treeData, setTreeData}) {
   const [draggedId, setDraggedId] = useState(/** @type {string | null} */ (null));
 
   const handleDragStart = (/** @type {React.DragEvent} */ e, /** @type {string} */ _id) => {
-    console.log("drag start", _id);
+    //console.log("drag start", _id);
     setDraggedId(_id);
   };
 
   const handleDragOver = (/** @type {React.DragEvent} */ e) => {
     if(e.target.getAttribute('value_id')){
-      e.target.style.backgroundColor = '#5050d370';
+      e.target.parentNode.style.backgroundColor = '#5050d370';
 
     }
     e.preventDefault();
@@ -36,9 +42,6 @@ export default function SortableTree({treeData, setTreeData}) {
 
     const [targetNode, targetParent] = findNodeById(newTreeData, targetId);
 
-
-    console.log(targetNode)
-
     if(!targetNode.children) targetNode.children = [];
 
     targetNode.children.push(draggedNode);
@@ -47,11 +50,12 @@ export default function SortableTree({treeData, setTreeData}) {
     if (targetParent) {
       const targetIndex = targetParent.findIndex((node) => node._id === targetId);
       targetParent.splice(targetIndex + 1, 0, draggedNode);
-      setTreeData([...newTreeData]);
-    }
-    */
+      }
+      */
+   setTreeData([...newTreeData]);
     
     e.target.style.backgroundColor = 'initial'
+    e.target.parentNode.style.backgroundColor = 'initial'
     setDraggedId(null);
   };
 
@@ -81,7 +85,8 @@ export default function SortableTree({treeData, setTreeData}) {
   };
 
   return (
-    <div className="p-6 max-w-2xl mx-auto">
+    <div >
+      {/*
       <div className="mb-6 flex items-center justify-between">
         <h1 className="text-2xl font-bold text-gray-800">Sortable Tree</h1>
         <button
@@ -91,9 +96,10 @@ export default function SortableTree({treeData, setTreeData}) {
           <Plus className="w-4 h-4" />
           Add Root Item
         </button>
-      </div>
+      </div>      
+      */}
       
-      <div className="bg-white rounded-xl shadow-lg p-6">
+      <div >
         {treeData.map((node, key) => (
           <TreeNode
             key={`${node.title}-${node._id}-${key}`}

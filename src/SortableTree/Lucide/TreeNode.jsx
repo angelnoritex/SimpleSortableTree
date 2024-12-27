@@ -36,11 +36,15 @@ export function TreeNode({
         marginTop: ".5rem",
         marginBottom: ".5rem",
         
-    }}>
+    }}
+    >
       <div
         onDragOver={onDragOver}
         value_id={_id}
-        onDragLeave={(e) => e.target.style.backgroundColor = 'initial'}
+        onDragLeave={(e) => {
+            e.target.style.backgroundColor = 'initial'
+            e.target.parentNode.style.backgroundColor = 'initial'
+        }}
         onDrop={(e) => onDrop(e, _id)}
         style={{ 
           marginLeft: `${level * 20}px`,
@@ -48,6 +52,8 @@ export function TreeNode({
           alignItems: 'center',
           gap: '0.25rem',
           padding: '0.5rem',
+          paddingLeft: 0,
+
           cursor: "pointer",
           transition: 'background-color 0.2s',
           ':hover': {
@@ -61,14 +67,15 @@ export function TreeNode({
           onDragStart={(e) => onDragStart(e, _id)}
           style={{
             cursor: 'move',
-            opacity: 0,
+            display: 'flex',
+            alignItems: 'center',
             transition: 'opacity 0.2s',
             ':hover': {
               opacity: 1
             }
           }}
         >
-          <GripVertical style={{ width: '1rem', height: '1rem', color: '#9ca3af' }} />
+          <GripVertical style={{ width: '1.5rem', height: '1rem', color: '#9ca3af' }} />
         </div>
         
         {children?.length ? (
@@ -76,10 +83,13 @@ export function TreeNode({
             onClick={() => setIsExpanded(!isExpanded)}
             style={{
               padding: '0.25rem',
-              borderRadius: '0.25rem',
+              outline:"none",
+              background:"none",
+              border:"none",
+
+              
               transition: 'background-color 0.2s',
               ':hover': {
-                backgroundColor: '#e5e7eb'
               }
             }}
           >
@@ -93,7 +103,15 @@ export function TreeNode({
           <div style={{ width: '1.5rem' }} />
         )}
         
-        <span style={{ flexGrow: 1 }}>{title} - {_id}</span>
+        <span style={{
+             flexGrow: 1 ,
+             pointerEvents:"none",
+             
+             WebkitUserSelect: "none", 
+             msUserSelect: "none", 
+             userSelect: "none", 
+              
+             }}>{title} - {_id}</span>
         
         {/*
          
