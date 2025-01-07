@@ -7,7 +7,7 @@
 import { useCallback, useContext, useEffect, useMemo, useReducer, useRef, useState } from 'react';
 
 // eslint-disable-next-line @atlaskit/ui-styling-standard/use-compiled -- Ignored via go/DSP-18766
-import { css, jsx } from '@emotion/react';
+import { jsx } from '@emotion/react';
 import memoizeOne from 'memoize-one';
 import invariant from 'tiny-invariant';
 
@@ -19,28 +19,21 @@ import { monitorForElements } from '@atlaskit/pragmatic-drag-and-drop/element/ad
 import { token } from '@atlaskit/tokens';
 
 import {
-	getInitialTreeState,
 	tree,
 	treeStateReducer,
+	treeData
 } from './data/tree';
 
 import { DependencyContext, TreeContext } from './pieces/tree/tree-context';
 /**
- * @typedef {import("./pieces/tree/tree-context").TreeContextValue} TreeContextValue
- * @typedef {import("./data/tree").TreeItem} TreeItemType
+ * @typedef {import("./types").TreeContextValue} TreeContextValue
+ * @typedef {import("./types").TreeItem} TreeItemType
  * 
  */
 
 import TreeItem from './pieces/tree/tree-item';
 
-const treeStyles = css({
-	display: 'flex',
-	boxSizing: 'border-box',
-	width: 280,
-	padding: 8,
-	flexDirection: 'column',
-	background: token('elevation.surface.sunken', '#F7F8F9'),
-});
+
 
 /**
  * @typedef {Object} CleanupFn
@@ -56,8 +49,10 @@ function createTreeItemRegistry() {
 
 	const registerTreeItem = ({ itemId, element, actionMenuTrigger }) => {
 		registry.set(itemId, { element, actionMenuTrigger });
-		return () => {
-			registry.delete(itemId);
+		return {
+			cleanup: () => {
+				registry.delete(itemId);
+			}
 		};
 	};
 
@@ -69,7 +64,8 @@ function createTreeItemRegistry() {
  * @returns {JSX.Element}
  */
 export default function Tree() {
-	const [state, updateState] = useReducer(treeStateReducer, null, getInitialTreeState);
+	const [state, updateState] = useReducer(treeStateReducer, {data:treeData, lastAction:null});
+	
 	const ref = useRef(null);
 	const { extractInstruction } = useContext(DependencyContext);
 
@@ -229,8 +225,8 @@ export default function Tree() {
 							updateState({
 								type: 'instruction',
 								instruction,
-								itemId,
-								targetId,
+								// @ts-ignore
+								itemId,	targetId,
 							});
 						}
 					}
@@ -243,7 +239,15 @@ export default function Tree() {
 		<TreeContext.Provider value={context}>
 			{/* eslint-disable-next-line @atlaskit/ui-styling-standard/enforce-style-prop -- Ignored via go/DSP-18766 */}
 			<div style={{ display: 'flex', justifyContent: 'center', padding: 24 }}>
-				<div css={treeStyles} id="tree" ref={ref}>
+				
+				<div style={{
+					display: 'flex',
+					boxSizing: 'border-box',
+					width: 280,
+					padding: 8,
+					flexDirection: 'column',
+					background: token('elevation.surface.sunken', '#F7F8F9'),
+				}} id="tree" ref={ref}>
 					{data.map((item, index, array) => {
 						const type = (() => {
 							if (item.children.length && item.isOpen) {

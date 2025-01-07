@@ -1,0 +1,58 @@
+.outerButtonStyles {
+    --grid: 8px;
+    /**
+     * Without this Safari renders white text on drag.
+     */
+    color: black;
+    border: 0;
+    width: 100%;
+    position: relative;
+    background: transparent;
+    margin: 0;
+    padding: 0;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.outerHoverStyles {
+    border-radius: 3px;
+    cursor: pointer;
+    /* eslint-disable-next-line @atlaskit/ui-styling-standard/no-unsafe-selectors -- Ignored via go/DSP-18766 */
+}
+
+.outerHoverStyles:hover {
+    background: rgba(9, 30, 66, 0.06);
+}
+
+.innerDraggingStyles {
+    opacity: 0.4;
+}
+
+.innerButtonStyles {
+    padding: var(--grid);
+    padding-right: 40px;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    background: rgba(9, 30, 66, 0.06);
+    border-radius: 3px;
+}
+
+.labelStyles {
+    flex-grow: 1;
+    overflow: hidden;
+    text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.previewStyles {
+    --grid: 8px;
+    background: red;
+    padding: var(--grid);
+    border-radius: 3px;
+}
+
+.parentOfInstructionStyles{
+	background: 'transparent',
+}

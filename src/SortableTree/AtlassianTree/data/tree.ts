@@ -1,93 +1,58 @@
 import invariant from 'tiny-invariant';
 
-import type { Instruction } from '@atlaskit/pragmatic-drag-and-drop-hitbox/tree-item';
+import type {TreeState, TreeAction, TreeItem} from '../types'
 
-export type TreeItem = {
-	id: string;
-	isDraft?: boolean;
-	children: TreeItem[];
-	isOpen?: boolean;
-};
 
-export type TreeState = {
-	lastAction: TreeAction | null;
-	data: TreeItem[];
-};
 
-export function getInitialTreeState(): TreeState {
-	return { data: getInitialData(), lastAction: null };
-}
+export const treeData:TreeItem[] = [
+	{
+		id: '1',
+		isOpen: true,
 
-export function getInitialData(): TreeItem[] {
-	return [
-		{
-			id: '1',
-			isOpen: true,
+		children: [
+			{
+				id: '1.3',
+				isOpen: true,
 
-			children: [
-				{
-					id: '1.3',
-					isOpen: true,
+				children: [
+					{
+						id: '1.3.1',
+						children: [],
+					},
+					{
+						id: '1.3.2',
+						isDraft: true,
+						children: [],
+					},
+				],
+			},
+			{ id: '1.4', children: [] },
+		],
+	},
+	{
+		id: '2',
+		isOpen: true,
+		children: [
+			{
+				id: '2.3',
+				isOpen: true,
 
-					children: [
-						{
-							id: '1.3.1',
-							children: [],
-						},
-						{
-							id: '1.3.2',
-							isDraft: true,
-							children: [],
-						},
-					],
-				},
-				{ id: '1.4', children: [] },
-			],
-		},
-		{
-			id: '2',
-			isOpen: true,
-			children: [
-				{
-					id: '2.3',
-					isOpen: true,
+				children: [
+					{
+						id: '2.3.1',
+						children: [],
+					},
+					{
+						id: '2.3.2',
+						children: [],
+					},
+				],
+			},
+		],
+	},
+];
 
-					children: [
-						{
-							id: '2.3.1',
-							children: [],
-						},
-						{
-							id: '2.3.2',
-							children: [],
-						},
-					],
-				},
-			],
-		},
-	];
-}
 
-export type TreeAction =
-	| {
-			type: 'instruction';
-			instruction: Instruction;
-			itemId: string;
-			targetId: string;
-	  }
-	| {
-			type: 'toggle';
-			itemId: string;
-	  }
-	| {
-			type: 'expand';
-			itemId: string;
-	  }
-	| {
-			type: 'collapse';
-			itemId: string;
-	  }
-	| { type: 'modal-move'; itemId: string; targetId: string; index: number };
 
 export const tree = {
 	remove(data: TreeItem[], id: string): TreeItem[] {
@@ -338,3 +303,4 @@ function getChildItems(data: TreeItem[], targetId: string) {
 
 	return targetItem.children;
 }
+ 
