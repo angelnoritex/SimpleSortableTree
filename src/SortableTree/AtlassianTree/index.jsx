@@ -24,14 +24,14 @@ import {
 	treeStateReducer,
 } from './data/tree';
 
-import { DependencyContext, TreeContext } from './pieces/tree/tree-context';
+import { DependencyContext, TreeContext } from './tree/tree-context';
 /**
- * @typedef {import("./pieces/tree/tree-context").TreeContextValue} TreeContextValue
- * @typedef {import("./data/tree").TreeItem} TreeItemType
+ * @typedef {import("./types").TreeContextValue} TreeContextValue
+ * @typedef {import("./types").TreeItem} TreeItemType
  * 
  */
 
-import TreeItem from './pieces/tree/tree-item';
+import TreeItem from './tree/tree-item';
 
 const treeStyles = css({
 	display: 'flex',
@@ -48,19 +48,31 @@ const treeStyles = css({
  */
 
 /**
+ * @typedef {function({ itemId: string, element: HTMLElement, actionMenuTrigger: HTMLElement }): CleanupFn} RegisterTreeItem
+ */
+
+/**
  * Creates a registry for tree items.
- * @returns {{ registry: Map<string, { element: HTMLElement, actionMenuTrigger: HTMLElement }>, registerTreeItem: ({ itemId, element, actionMenuTrigger }: { itemId: string, element: HTMLElement, actionMenuTrigger: HTMLElement }) => CleanupFn }}
+ * @returns {{ registry: Map<string, { element: HTMLElement, actionMenuTrigger: HTMLElement }>, registerTreeItem:RegisterTreeItem }}
  */
 function createTreeItemRegistry() {
 	const registry = new Map();
 
+	/**
+	 * Registers a tree item in the registry
+	 * @param {Object} params - The registration parameters
+	 * @param {string} params.itemId - The ID of the tree item
+	 * @param {HTMLElement} params.element - The DOM element of the tree item
+	 * @param {HTMLElement} params.actionMenuTrigger - The action menu trigger element
+	 * @returns {() => void} A cleanup function to remove the item from registry
+	 */
 	const registerTreeItem = ({ itemId, element, actionMenuTrigger }) => {
 		registry.set(itemId, { element, actionMenuTrigger });
 		return () => {
 			registry.delete(itemId);
 		};
 	};
-
+	// @ts-ignore
 	return { registry, registerTreeItem };
 }
 
@@ -229,8 +241,8 @@ export default function Tree() {
 							updateState({
 								type: 'instruction',
 								instruction,
-								itemId,
-								targetId,
+								// @ts-ignore
+								itemId, targetId,
 							});
 						}
 					}

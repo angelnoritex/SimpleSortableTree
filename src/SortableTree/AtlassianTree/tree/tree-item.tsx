@@ -24,7 +24,7 @@ import { DependencyContext, TreeContext } from './tree-context';
 
 import type{ Instruction, ItemMode, } from '@atlaskit/pragmatic-drag-and-drop-hitbox/tree-item';
 import type { DragLocationHistory } from '@atlaskit/pragmatic-drag-and-drop/types';
-import type {  TreeItem as TreeItemType } from '../../types';
+import type {  TreeItem as TreeItemType } from '../types';
 
 
 
@@ -42,82 +42,12 @@ function Icon({ item }: { item: TreeItemType }) {
 	}
 	return "-     -"
 }
-
-const outerButtonStyles = css({
-	'--grid': '8px',
-	/**
-	 * Without this Safari renders white text on drag.
-	 */
-	color: 'black',
-
-	border: 0,
-	width: '100%',
-	position: 'relative',
-	background: 'transparent',
-	margin: 0,
-	padding: 0,
-	borderRadius: 3,
-	cursor: 'pointer',
-});
-
-const outerHoverStyles = css({
-	borderRadius: 3,
-	cursor: 'pointer',
-	// eslint-disable-next-line @atlaskit/ui-styling-standard/no-unsafe-selectors -- Ignored via go/DSP-18766
-	':hover': {
-		background: 'rgba(9, 30, 66, 0.06)',
-	},
-});
-
-const innerDraggingStyles = css({
-	opacity: 0.4,
-});
-
-const innerButtonStyles = css({
-	padding: 'var(--grid)',
-	paddingRight: 40,
-	alignItems: 'center',
-	display: 'flex',
-	flexDirection: 'row',
-
-	background: 'rgba(9, 30, 66, 0.06)',
-	borderRadius: 3,
-});
-
-const idStyles = css({
-	margin: 0,
-	color: '#8993A5',
-});
-
-const labelStyles = css({
-	flexGrow: 1,
-	overflow: 'hidden',
-	textAlign: 'left',
-	textOverflow: 'ellipsis',
-	whiteSpace: 'nowrap',
-});
-
-const debugStyles = css({
-	position: 'absolute',
-	right: 'var(--grid)',
-	bottom: 0,
-	fontSize: '6px',
-});
-
-const previewStyles = css({
-	'--grid': '8px',
-	background: 'red',
-	padding: 'var(--grid)',
-	borderRadius: 3,
-});
+// @ts-ignore
+import styles from './styles.module.css'
 
 function Preview({ item }: { item: TreeItemType }) {
-	return <div css={previewStyles}>Item {item.id}</div>;
+	return <div className={styles.previewStyles}>Item {item.id}</div>;
 }
-
-const parentOfInstructionStyles = css({
-	background: 'transparent',
-});
 
 function getParentLevelOfInstruction(instruction: Instruction): number {
 	if (instruction.type === 'instruction-blocked') {
@@ -356,25 +286,18 @@ const TreeItem = memo(function TreeItem({
 		};
 	})();
 
-	const [isMoveDialogOpen, setIsMoveDialogOpen] = useState(false);
-	const openMoveDialog = useCallback(() => {
-		setIsMoveDialogOpen(true);
-	}, []);
-	const closeMoveDialog = useCallback(() => {
-		setIsMoveDialogOpen(false);
-	}, []);
 
 	return (
 		<Fragment>
 			<div
-				css={[state === 'idle' ? outerHoverStyles : undefined]}
+				className={state === 'idle' ? styles.outerHoverStyles : ' '}
 				// eslint-disable-next-line @atlaskit/ui-styling-standard/enforce-style-prop -- Ignored via go/DSP-18766
 				style={{ position: 'relative' }}
 			>
 				<FocusRing isInset>
 					<button
 						{...aria}
-						css={[outerButtonStyles]}
+						className={styles.outerButtonStyles}
 						id={`tree-item-${item.id}`}
 						onClick={toggleOpen}
 						ref={buttonRef}
@@ -386,17 +309,17 @@ const TreeItem = memo(function TreeItem({
 						data-testid={`tree-item-${item.id}`}
 					>
 						<span
-							css={[
-								innerButtonStyles,
+							className={
+								styles.innerButtonStyles +' '+
 								state === 'dragging'
-									? innerDraggingStyles
+									? styles.innerDraggingStyles
 									: state === 'parent-of-instruction'
-										? parentOfInstructionStyles
-										: undefined,
-							]}
+										? styles.parentOfInstructionStyles
+										: undefined
+							}
 						>
 							<Icon item={item} />
-							<span css={labelStyles}>Item {item.id}</span>
+							<span className={styles.labelStyles}>Item {item.id}</span>
 					
 						</span>
 						{instruction ? <DropIndicator instruction={instruction} /> : null}

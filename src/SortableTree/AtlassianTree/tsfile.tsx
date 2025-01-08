@@ -22,11 +22,12 @@ import { token } from '@atlaskit/tokens';
 import {
 	getInitialTreeState,
 	tree,
-	type TreeItem as TreeItemType,
 	treeStateReducer,
 } from './data/tree';
-import { DependencyContext, TreeContext, type TreeContextValue } from './pieces/tree/tree-context';
-import TreeItem from './pieces/tree/tree-item';
+import { DependencyContext, TreeContext } from './tree/tree-context';
+import TreeItem from './tree/tree-item';
+
+import type {TreeItem as TreeItemType, TreeContextValue} from './types'
 
 const treeStyles = css({
 	display: 'flex',
@@ -150,6 +151,7 @@ export default function Tree() {
 				continue;
 			}
 
+			// @ts-ignore
 			targets.push(node);
 
 			node.children.forEach((childNode) => searchStack.push(childNode));
