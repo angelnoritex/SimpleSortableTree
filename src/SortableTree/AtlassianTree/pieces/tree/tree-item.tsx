@@ -16,16 +16,15 @@ import FocusRing from '@atlaskit/focus-ring';
 import ChevronDownIcon from '@atlaskit/icon/utility/migration/chevron-down';
 import ChevronRightIcon from '@atlaskit/icon/utility/migration/chevron-right';
 
-import { type Instruction, type ItemMode, } from '@atlaskit/pragmatic-drag-and-drop-hitbox/tree-item';
 import { combine } from '@atlaskit/pragmatic-drag-and-drop/combine';
 import { draggable, dropTargetForElements, monitorForElements } from '@atlaskit/pragmatic-drag-and-drop/element/adapter';
 import { pointerOutsideOfPreview } from '@atlaskit/pragmatic-drag-and-drop/element/pointer-outside-of-preview';
 import { setCustomNativeDragPreview } from '@atlaskit/pragmatic-drag-and-drop/element/set-custom-native-drag-preview';
-
-import type { DragLocationHistory } from '@atlaskit/pragmatic-drag-and-drop/types';
-import { type TreeItem as TreeItemType } from '../../data/tree';
-
 import { DependencyContext, TreeContext } from './tree-context';
+
+import type{ Instruction, ItemMode, } from '@atlaskit/pragmatic-drag-and-drop-hitbox/tree-item';
+import type { DragLocationHistory } from '@atlaskit/pragmatic-drag-and-drop/types';
+import type {  TreeItem as TreeItemType } from '../../types';
 
 
 
@@ -175,7 +174,8 @@ const TreeItem = memo(function TreeItem({
 		return registerTreeItem({
 			itemId: item.id,
 			element: buttonRef.current,
-			actionMenuTrigger: null,
+			// @ts-ignore
+			actionMenuTrigger: undefined,
 		});
 	}, [item.id, registerTreeItem]);
 

@@ -32,12 +32,7 @@ export default [
       'react-refresh/only-export-components': [
         'warn',
         { allowConstantExport: true },
-
       ],
-      'react/prop-types': 'off',
-      'jsdoc/check-alignment': 'warn',
-      'jsdoc/check-indentation': 'warn',
-      'jsdoc/check-param-names': 'warn',
     },
   },
 ]

@@ -1,18 +1,6 @@
 import invariant from 'tiny-invariant';
 
-import type { Instruction } from '@atlaskit/pragmatic-drag-and-drop-hitbox/tree-item';
-
-export type TreeItem = {
-	id: string;
-	isDraft?: boolean;
-	children: TreeItem[];
-	isOpen?: boolean;
-};
-
-export type TreeState = {
-	lastAction: TreeAction | null;
-	data: TreeItem[];
-};
+import type {TreeAction, TreeState, TreeItem} from '../types'
 
 export function getInitialTreeState(): TreeState {
 	return { data: getInitialData(), lastAction: null };
@@ -67,27 +55,6 @@ export function getInitialData(): TreeItem[] {
 		},
 	];
 }
-
-export type TreeAction =
-	| {
-			type: 'instruction';
-			instruction: Instruction;
-			itemId: string;
-			targetId: string;
-	  }
-	| {
-			type: 'toggle';
-			itemId: string;
-	  }
-	| {
-			type: 'expand';
-			itemId: string;
-	  }
-	| {
-			type: 'collapse';
-			itemId: string;
-	  }
-	| { type: 'modal-move'; itemId: string; targetId: string; index: number };
 
 export const tree = {
 	remove(data: TreeItem[], id: string): TreeItem[] {
