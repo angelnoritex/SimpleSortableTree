@@ -1,5 +1,3 @@
-
-
 import React, { Fragment, memo, useCallback, useContext, useEffect, useRef, useState } from 'react';
 
 
@@ -27,14 +25,14 @@ import type {  TreeItem as TreeItemType } from './types';
 const IDENT = 10;
 
 
-function GroupIcon({ isOpen }: { isOpen: boolean }) {
-	const Icon = isOpen ? ChevronDownIcon : ChevronRightIcon;
+function GroupIcon({ expanded }: { expanded: boolean }) {
+	const Icon = expanded ? ChevronDownIcon : ChevronRightIcon;
 	return <Icon spacing="spacious" label="" />;
 }
 
 function Icon({ item }: { item: TreeItemType }) {
 	if (item.children.length) {
-		return <GroupIcon isOpen={item.isOpen ?? false} />;
+		return <GroupIcon expanded={item.expanded ?? false} />;
 	}
 	return "-     -"
 }
@@ -158,7 +156,7 @@ const TreeItem = memo(function TreeItem({
 				getInitialData: () => ({
 					id: item.id,
 					type: 'tree-item',
-					isOpenOnDragStart: item.isOpen,
+					isOpenOnDragStart: item.expanded,
 					uniqueContextId,
 				}),
 				onGenerateDragPreview: ({ nativeSetDragImage }) => {
@@ -196,7 +194,7 @@ const TreeItem = memo(function TreeItem({
 						indentPerLevel:IDENT,
 						currentLevel: level,
 						mode,
-						block: item.isDraft ? ['make-child'] : [],
+						block: [],
 					});
 				},
 				canDrop: ({ source }) =>
@@ -210,7 +208,7 @@ const TreeItem = memo(function TreeItem({
 						if (
 							instruction?.type === 'make-child' &&
 							item.children.length &&
-							!item.isOpen &&
+							!item.expanded &&
 							!cancelExpandRef.current
 						) {
 							cancelExpandRef.current = delay({
@@ -277,7 +275,7 @@ const TreeItem = memo(function TreeItem({
 			return undefined;
 		}
 		return {
-			'aria-expanded': item.isOpen,
+			'aria-expanded': item.expanded,
 			'aria-controls': `tree-item-${item.id}--subtree`,
 		};
 	})();
@@ -346,11 +344,11 @@ const TreeItem = memo(function TreeItem({
 				 */}
 
 			</div>
-			{item.children.length && item.isOpen ? (
+			{item.children.length && item.expanded ? (
 				<div id={aria?.['aria-controls']}>
 					{item.children.map((child, index, array) => {
 						const childType: ItemMode = (() => {
-							if (child.children.length && child.isOpen) {
+							if (child.children.length && child.expanded) {
 								return 'expanded';
 							}
 

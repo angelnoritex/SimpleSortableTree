@@ -1,4 +1,3 @@
-
 import type { Instruction } from '@atlaskit/pragmatic-drag-and-drop-hitbox/tree-item';
 import {
 	attachInstruction,
@@ -9,9 +8,8 @@ import { DropIndicator } from '@atlaskit/pragmatic-drag-and-drop-react-drop-indi
 
 export type TreeItem = {
 	id: string;
-	isDraft?: boolean;
 	children: TreeItem[];
-	isOpen?: boolean;
+	expanded?: boolean;
 };
 
 export type TreeState = {

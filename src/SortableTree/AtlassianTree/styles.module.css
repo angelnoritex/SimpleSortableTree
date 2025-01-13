@@ -66,3 +66,17 @@
 .parentOfInstructionStyles{
 	background: 'transparent';
 }
+
+.treeContainer {
+	display: flex;
+	width: 280px;
+	padding: 8px;
+	flex-direction: column;
+	background: var(--ds-surface-sunken, #F7F8F9);
+}
+
+.wrapper {
+	display: flex;
+	justify-content: center;
+	padding: 24px;
+}

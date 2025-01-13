@@ -2,59 +2,7 @@ import invariant from 'tiny-invariant';
 
 import type {TreeAction, TreeState, TreeItem} from './types'
 
-export function getInitialTreeState(): TreeState {
-	return { data: getInitialData(), lastAction: null };
-}
 
-export function getInitialData(): TreeItem[] {
-	return [
-		{
-			id: '1',
-			isOpen: true,
-
-			children: [
-				{
-					id: '1.3',
-					isOpen: true,
-
-					children: [
-						{
-							id: '1.3.1',
-							children: [],
-						},
-						{
-							id: '1.3.2',
-							isDraft: true,
-							children: [],
-						},
-					],
-				},
-				{ id: '1.4', children: [] },
-			],
-		},
-		{
-			id: '2',
-			isOpen: true,
-			children: [
-				{
-					id: '2.3',
-					isOpen: true,
-
-					children: [
-						{
-							id: '2.3.1',
-							children: [],
-						},
-						{
-							id: '2.3.2',
-							children: [],
-						},
-					],
-				},
-			],
-		},
-	];
-}
 
 export const tree = {
 	remove(data: TreeItem[], id: string): TreeItem[] {
@@ -103,11 +51,9 @@ export const tree = {
 	insertChild(data: TreeItem[], targetId: string, newItem: TreeItem): TreeItem[] {
 		return data.flatMap((item) => {
 			if (item.id === targetId) {
-				// already a parent: add as first child
 				return {
 					...item,
-					// opening item so you can see where item landed
-					isOpen: true,
+					expanded: true,
 					children: [newItem, ...item.children],
 				};
 			}
@@ -228,7 +174,7 @@ const dataReducer = (data: TreeItem[], action: TreeAction) => {
 		}
 
 		if (item.id === action.itemId) {
-			return { ...item, isOpen: !item.isOpen };
+			return { ...item, expanded: !item.expanded };
 		}
 
 		return { ...item, children: item.children.map(toggle) };
@@ -239,14 +185,14 @@ const dataReducer = (data: TreeItem[], action: TreeAction) => {
 	}
 
 	if (action.type === 'expand') {
-		if (tree.hasChildren(item) && !item.isOpen) {
+		if (tree.hasChildren(item) && !item.expanded) {
 			return data.map(toggle);
 		}
 		return data;
 	}
 
 	if (action.type === 'collapse') {
-		if (tree.hasChildren(item) && item.isOpen) {
+		if (tree.hasChildren(item) && item.expanded) {
 			return data.map(toggle);
 		}
 		return data;
