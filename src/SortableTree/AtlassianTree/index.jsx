@@ -22,16 +22,16 @@ import {
 	getInitialTreeState,
 	tree,
 	treeStateReducer,
-} from './data/tree';
+} from './utils';
 
-import { DependencyContext, TreeContext } from './tree/tree-context';
+import { DependencyContext, TreeContext } from './tree-context';
 /**
  * @typedef {import("./types").TreeContextValue} TreeContextValue
  * @typedef {import("./types").TreeItem} TreeItemType
  * 
  */
 
-import TreeItem from './tree/tree-item';
+import TreeItem from './TreeItemComponent';
 
 const treeStyles = css({
 	display: 'flex',

@@ -1,6 +1,6 @@
 import invariant from 'tiny-invariant';
 
-import type {TreeAction, TreeState, TreeItem} from '../types'
+import type {TreeAction, TreeState, TreeItem} from './types'
 
 export function getInitialTreeState(): TreeState {
 	return { data: getInitialData(), lastAction: null };
