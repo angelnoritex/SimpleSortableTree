@@ -82,6 +82,9 @@ export const tree = {
 			}
 		}
 	},
+	
+
+
 	getPathToItem({
 		current,
 		targetId,
@@ -106,6 +109,9 @@ export const tree = {
 		}
 	},
 	hasChildren(item: TreeItem): boolean {
+		if(!item.children){
+			item.children = []
+		}
 		return item.children.length > 0;
 	},
 };

@@ -9,6 +9,8 @@ import { monitorForElements } from '@atlaskit/pragmatic-drag-and-drop/element/ad
 import {  tree, treeStateReducer } from './utils';
 import { DependencyContext, TreeContext } from './tree-context';
 import TreeItem from './TreeItemComponent';
+
+// @ts-ignore
 import styles from './styles.module.css';
 
 /**
@@ -19,10 +21,6 @@ import styles from './styles.module.css';
 
 /**
  * @typedef {function({ itemId: string, element: HTMLElement, actionMenuTrigger: HTMLElement }): ()=>void} RegisterTreeItem
- */
-
-/**
- * Creates a registry for tree items.
  * @returns {{ registry: Map<string, { element: HTMLElement, actionMenuTrigger: HTMLElement }>, registerTreeItem:RegisterTreeItem }}
  */
 function useTreeRegistry() {
@@ -38,58 +36,10 @@ function useTreeRegistry() {
 
 
 
-const initialData = [
-	{
-		id: '1',
-		expanded: true,
-
-		children: [
-			{
-				id: '1.3',
-				expanded: true,
-
-				children: [
-					{
-						id: '1.3.1',
-						children: [],
-					},
-					{
-						id: '1.3.2',
-						children: [],
-					},
-				],
-			},
-			{ id: '1.4', children: [] },
-		],
-	},
-	{
-		id: '2',
-		expanded: true,
-		children: [
-			{
-				id: '2.3',
-				expanded: true,
-
-				children: [
-					{
-						id: '2.3.1',
-						children: [],
-					},
-					{
-						id: '2.3.2',
-						children: [],
-					},
-				],
-			},
-		],
-	},
-];
 
 
 
-
-export default function () {
-	const [state, updateState] = useReducer(treeStateReducer,  { data: initialData, lastAction: null });
+export default function ({state, updateState}) {
 	const ref = useRef(null);
 	const { extractInstruction } = useContext(DependencyContext);
 	const { registry, registerTreeItem } = useTreeRegistry();
@@ -186,7 +136,7 @@ export default function () {
 							key={item.id}
 							item={item}
 							level={0}
-							mode={item.children.length && item.expanded ? 'expanded' : 
+							mode={item.children?.length && item.expanded ? 'expanded' : 
 									index === array.length - 1 ? 'last-in-group' : 'standard'}
 							index={index}
 						/>

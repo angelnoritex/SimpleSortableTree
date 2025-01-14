@@ -7,8 +7,6 @@ import invariant from 'tiny-invariant';
 
 
 import FocusRing from '@atlaskit/focus-ring';
-import ChevronDownIcon from '@atlaskit/icon/utility/migration/chevron-down';
-import ChevronRightIcon from '@atlaskit/icon/utility/migration/chevron-right';
 
 import { combine } from '@atlaskit/pragmatic-drag-and-drop/combine';
 import { draggable, dropTargetForElements, monitorForElements } from '@atlaskit/pragmatic-drag-and-drop/element/adapter';
@@ -26,15 +24,25 @@ const IDENT = 10;
 
 
 function GroupIcon({ expanded }: { expanded: boolean }) {
-	const Icon = expanded ? ChevronDownIcon : ChevronRightIcon;
-	return <Icon spacing="spacious" label="" />;
+	const iconStyle = {
+		width: `${IDENT +14}` +'px',
+		height: '24px',
+		display: 'inline-flex',
+		alignItems: 'center',
+		justifyContent: 'center',
+		transform: expanded ? 'rotate(90deg)' : 'none',
+		transition: 'transform 0.2s ease'
+	  };
+	return  <span style={iconStyle}>
+	▶
+  </span>
 }
 
 function Icon({ item }: { item: TreeItemType }) {
-	if (item.children.length) {
+	if (item.children?.length) {
 		return <GroupIcon expanded={item.expanded ?? false} />;
 	}
-	return "-     -"
+	return <i style={{marginLeft: IDENT + 4}}></i>
 }
 // @ts-ignore
 import styles from './styles.module.css'
@@ -207,7 +215,7 @@ const TreeItem = memo(function TreeItem({
 						// expand after 500ms if still merging
 						if (
 							instruction?.type === 'make-child' &&
-							item.children.length &&
+							item.children?.length &&
 							!item.expanded &&
 							!cancelExpandRef.current
 						) {
@@ -271,7 +279,7 @@ const TreeItem = memo(function TreeItem({
 	);
 
 	const aria = (() => {
-		if (!item.children.length) {
+		if (!item.children?.length) {
 			return undefined;
 		}
 		return {
@@ -313,42 +321,20 @@ const TreeItem = memo(function TreeItem({
 							}
 						>
 							<Icon item={item} />
-							<span className={styles.labelStyles}>Item {item.id}</span>
+							<span className={styles.labelStyles}>Item {item._id}</span>
 					
 						</span>
 						{instruction ? <DropIndicator instruction={instruction} /> : null}
 					</button>
 				</FocusRing>
-				{/*
-				<DropdownMenu
-					trigger={({ triggerRef, ...triggerProps }) => (
-						<Button
-							ref={mergeRefs([triggerRef, actionMenuTriggerRef])}
-							iconBefore={
-								<MoreIcon
-									label="Actions"
-									LEGACY_size="small"
-									color={token('color.icon.subtle', '#626F86')}
-								/>
-							}
-							{...triggerProps}
-							spacing="compact"
-							// eslint-disable-next-line @atlaskit/ui-styling-standard/enforce-style-prop -- Ignored via go/DSP-18766
-							style={{ position: 'absolute', top: 8, right: 8 }}
-							appearance="subtle"
-						/>
-					)}
-				>
-					
-				</DropdownMenu>
-				 */}
+				
 
 			</div>
-			{item.children.length && item.expanded ? (
+			{item.children && item.children?.length && item.expanded ? (
 				<div id={aria?.['aria-controls']}>
-					{item.children.map((child, index, array) => {
+					{item.children?.map((child, index, array) => {
 						const childType: ItemMode = (() => {
-							if (child.children.length && child.expanded) {
+							if (child.children?.length && child.expanded) {
 								return 'expanded';
 							}
 
