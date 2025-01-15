@@ -9,6 +9,7 @@ import { DropIndicator } from '@atlaskit/pragmatic-drag-and-drop-react-drop-indi
 export type TreeItem = {
 	id: string;
 	_id: string;
+	copys: number;
 	slug: string;
 	title: string;
 	children: TreeItem[];

@@ -35,16 +35,20 @@ export const tree = {
 	copy(data: TreeItem[], targetId: string, newItem: TreeItem): TreeItem[] {
 		return data.flatMap((item) => {
 			if (item.id === targetId) {
-				const copy = {...newItem}
-				copy.id = targetId + '_inserted_' + newItem.id +'_'+ Math.random().toString(2).substring(2,9)
-				
-				return [item, copy];
+				item.copys = (item.copys || 0) + 0.5;
+				return [
+					item, 
+					{
+						...newItem,
+						id: `${newItem.id}-${item.copys}`
+					}
+				];
 			}
 
 			if (tree.hasChildren(item)) {
 				return {
 					...item,
-					children: tree.insertAfter(item.children, targetId, newItem),
+					children: tree.copy(item.children, targetId, newItem),
 				};
 			}
 			

@@ -328,7 +328,7 @@ const TreeItem = memo(function TreeItem({
 							<span onClick={toggleOpen}>
 								<Icon  item={item} />
 							</span>
-							<span className={styles.labelStyles}>{item.title}</span>
+							<span className={styles.labelStyles}>{item.id}</span>
 					
 						</span>
 						{instruction ? <DropIndicator instruction={instruction} /> : null}
