@@ -9,6 +9,8 @@ import { DropIndicator } from '@atlaskit/pragmatic-drag-and-drop-react-drop-indi
 export type TreeItem = {
 	id: string;
 	_id: string;
+	slug: string;
+	title: string;
 	children: TreeItem[];
 	expanded?: boolean;
 };
@@ -37,7 +39,9 @@ export type TreeAction =
 			type: 'collapse';
 			itemId: string;
 	  }
-	| { type: 'modal-move'; itemId: string; targetId: string; index: number };
+	| { type: 'modal-move'; itemId: string; targetId: string; index: number }
+	| { type: 'remove';	itemId: string; }
+	| { type: 'copy';	itemId: string; }
 
 
     

@@ -32,9 +32,29 @@ export const tree = {
 			return item;
 		});
 	},
+	copy(data: TreeItem[], targetId: string, newItem: TreeItem): TreeItem[] {
+		return data.flatMap((item) => {
+			if (item.id === targetId) {
+				const copy = {...newItem}
+				copy.id = targetId + '_inserted_' + newItem.id +'_'+ Math.random().toString(2).substring(2,9)
+				
+				return [item, copy];
+			}
+
+			if (tree.hasChildren(item)) {
+				return {
+					...item,
+					children: tree.insertAfter(item.children, targetId, newItem),
+				};
+			}
+			
+			return item;
+		});
+	},
 	insertAfter(data: TreeItem[], targetId: string, newItem: TreeItem): TreeItem[] {
 		return data.flatMap((item) => {
 			if (item.id === targetId) {
+
 				return [item, newItem];
 			}
 
@@ -44,7 +64,7 @@ export const tree = {
 					children: tree.insertAfter(item.children, targetId, newItem),
 				};
 			}
-
+			
 			return item;
 		});
 	},
@@ -202,6 +222,19 @@ const dataReducer = (data: TreeItem[], action: TreeAction) => {
 			return data.map(toggle);
 		}
 		return data;
+	}
+
+	if (action.type === 'remove') {
+		let result = tree.remove(data, item.id);
+		return result
+	}
+
+	if (action.type === 'copy') {
+		
+		let result = tree.copy(data, action.itemId, item);
+		console.log(result);
+		return result
+		
 	}
 
 	if (action.type === 'modal-move') {

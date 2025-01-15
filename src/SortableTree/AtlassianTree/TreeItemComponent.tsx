@@ -1,7 +1,7 @@
 import React, { Fragment, memo, useCallback, useContext, useEffect, useRef, useState } from 'react';
 
 
-import ReactDOM from 'react-dom';
+import ReactDOM, { flushSync } from 'react-dom';
 import invariant from 'tiny-invariant';
 
 
@@ -30,7 +30,8 @@ function GroupIcon({ expanded }: { expanded: boolean }) {
 		display: 'inline-flex',
 		alignItems: 'center',
 		justifyContent: 'center',
-		transform: expanded ? 'rotate(90deg)' : 'none',
+		transform: expanded ? 'scale(0.75)  rotate(90deg)' : 'scale(0.75) ',
+	
 		transition: 'transform 0.2s ease'
 	  };
 	return  <span style={iconStyle}>
@@ -42,13 +43,13 @@ function Icon({ item }: { item: TreeItemType }) {
 	if (item.children?.length) {
 		return <GroupIcon expanded={item.expanded ?? false} />;
 	}
-	return <i style={{marginLeft: IDENT + 4}}></i>
+	return <i style={{marginLeft: IDENT + 4, height: '24px',}}></i>
 }
 // @ts-ignore
 import styles from './styles.module.css'
 
 function Preview({ item }: { item: TreeItemType }) {
-	return <div className={styles.previewStyles}>Item {item.id}</div>;
+	return <div className={styles.previewStyles}>{item.slug}</div>;
 }
 
 function getParentLevelOfInstruction(instruction: Instruction): number {
@@ -171,8 +172,10 @@ const TreeItem = memo(function TreeItem({
 					setCustomNativeDragPreview({
 						getOffset: pointerOutsideOfPreview({ x: '16px', y: '8px' }),
 						render: ({ container }) => {
-							ReactDOM.render(<Preview item={item} />, container);
-							return () => ReactDOM.unmountComponentAtNode(container);
+							// @ts-ignore
+							const root = ReactDOM.createRoot(container);
+							root.render(<Preview item={item} />);
+							return () => root.unmount();
 						},
 						nativeSetDragImage,
 					});
@@ -288,7 +291,9 @@ const TreeItem = memo(function TreeItem({
 		};
 	})();
 
-
+	const handleRemove =()=>{
+		dispatch({ type: 'remove', itemId: item.id })
+	}
 	return (
 		<Fragment>
 			<div
@@ -301,10 +306,10 @@ const TreeItem = memo(function TreeItem({
 						{...aria}
 						className={styles.outerButtonStyles}
 						id={`tree-item-${item.id}`}
-						onClick={toggleOpen}
+						
 						ref={buttonRef}
 						type="button"
-						// eslint-disable-next-line @atlaskit/ui-styling-standard/no-imported-style-values -- Ignored via go/DSP-18766
+						
 						style={{ paddingLeft: level * IDENT }}
 						data-index={index}
 						data-level={level}
@@ -320,11 +325,21 @@ const TreeItem = memo(function TreeItem({
 										: undefined
 							}
 						>
-							<Icon item={item} />
-							<span className={styles.labelStyles}>Item {item._id}</span>
+							<span onClick={toggleOpen}>
+								<Icon  item={item} />
+							</span>
+							<span className={styles.labelStyles}>{item.title}</span>
 					
 						</span>
 						{instruction ? <DropIndicator instruction={instruction} /> : null}
+
+						<span style={{display:'flex', marginLeft:'auto', marginRight: '.75rem', gap:'2px'}}>
+							<button onClick={()=>dispatch({ type: 'copy', itemId: item.id })}>copy</button>
+							<button onClick={handleRemove}>del</button>
+
+						</span>
+
+						
 					</button>
 				</FocusRing>
 				
