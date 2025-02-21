@@ -6,12 +6,13 @@ import * as liveRegion from '@atlaskit/pragmatic-drag-and-drop-live-region';
 import { combine } from '@atlaskit/pragmatic-drag-and-drop/combine';
 import { monitorForElements } from '@atlaskit/pragmatic-drag-and-drop/element/adapter';
 
-import {  tree, treeStateReducer } from './utils';
+import {  treeStateReducer } from './redux';
+import tree from './redux/actions';
 import { DependencyContext, TreeContext } from './tree-context';
 import TreeItem from './TreeItemComponent';
 
 // @ts-ignore
-import styles from './styles.module.css';
+import './styles.css';
 
 /**
  * @typedef {import("./types").TreeContextValue} TreeContextValue
@@ -39,11 +40,14 @@ function useTreeRegistry() {
 
 
 
-export default function ({state, updateState}) {
+export default function AtlassianTree({state, updateState}) {
 	const ref = useRef(null);
+	// @ts-ignore
 	const { extractInstruction } = useContext(DependencyContext);
 	const { registry, registerTreeItem } = useTreeRegistry();
+
 	const { data, lastAction } = state;
+
 	const lastStateRef = useRef(data);
 
 	useEffect(() => {
@@ -69,14 +73,13 @@ export default function ({state, updateState}) {
 	}, [lastAction, registry]);
 
 	/**
-	 * Returns the items that the item with `itemId` can be moved to.
-	 * Uses a depth-first search (DFS) to compile a list of possible targets.
-	 * @param {{ itemId: string }} param0 - The item ID.
+	 * @param {object} param
+	 * @param {string } param.itemId - The item ID.
 	 * @returns {TreeItemType[]} The list of move targets.
 	 */
 	const getMoveTargets = useCallback(({ itemId }) => {
 		const data = lastStateRef.current;
-		return data.reduce((targets, node) => {
+		return data.reduce((/** @type {any[]} */ targets, /** @type {{ id: any; children: any; }} */ node) => {
 			if (node.id !== itemId) {
 				targets.push(node);
 				targets.push(...node.children);
@@ -90,7 +93,7 @@ export default function ({state, updateState}) {
 	 * @param {string} itemId - The item ID.
 	 * @returns {TreeItemType[]} The children of the item.
 	 */
-	const getChildrenOfItem = useCallback((itemId) => {
+	const getChildrenOfItem = useCallback((/** @type {string} */ itemId) => {
 		const data = lastStateRef.current;
 		return itemId === '' ? data : tree.find(data, itemId)?.children || [];
 	}, []);
@@ -98,7 +101,7 @@ export default function ({state, updateState}) {
 	const context = useMemo(() => ({
 		dispatch: updateState,
 		uniqueContextId: Symbol('unique-id'),
-		getPathToItem: (targetId) => tree.getPathToItem({ current: lastStateRef.current, targetId }) || [],
+		getPathToItem: (/** @type {any} */ targetId) => tree.getPathToItem({ current: lastStateRef.current, targetId }) || [],
 		getMoveTargets,
 		getChildrenOfItem,
 		registerTreeItem,
@@ -129,9 +132,14 @@ export default function ({state, updateState}) {
 
 	return (
 		<TreeContext.Provider value={context}>
-			<div className={styles.wrapper}>
-				<div className={styles.treeContainer} ref={ref}>
-					{data.map((item, index, array) => (
+			<div className={'wrapper'}>
+				<div className={'treeContainer'} ref={ref}>
+					{
+					
+					data.map((
+						/** @type {TreeItemType} */ item,
+						/** @type {number} */ index, 
+						/** @type {string | any[]} */ array) => (
 						<TreeItem
 							key={item.id}
 							item={item}

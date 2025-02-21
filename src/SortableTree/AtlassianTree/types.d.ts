@@ -21,29 +21,16 @@ export type TreeState = {
 	data: TreeItem[];
 };
 
-export type TreeAction =
-	| {
-			type: 'instruction';
-			instruction: Instruction;
-			itemId: string;
-			targetId: string;
-	  }
-	| {
-			type: 'toggle';
-			itemId: string;
-	  }
-	| {
-			type: 'expand';
-			itemId: string;
-	  }
-	| {
-			type: 'collapse';
-			itemId: string;
-	  }
-	| { type: 'modal-move'; itemId: string; targetId: string; index: number }
-	| { type: 'remove';	itemId: string; }
-	| { type: 'copy';	itemId: string; }
+type ActionType = 'instruction' | 'toggle'| 'expand'| 'collapse'| 'remove'| 'copy'| 'insertAtLast'| 'modal-move' | 'update'
 
+export type TreeAction = {
+			type: ActionType;
+			itemId: string;
+			instruction: Instruction;
+			targetId: string;
+			index: number
+			item: TreeItem
+	  }
 
     
 export type TreeContextValue = {
