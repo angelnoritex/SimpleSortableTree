@@ -7,6 +7,8 @@ const tree = {
 	 * @param {string} id - The ID of the item to hide.
 	 * @returns {TreeItem[]} The updated tree data.
 	 */
+
+
 	hide(data, id) {
 		return data.map((item) => {
 			if (item.id === id) {
@@ -83,7 +85,6 @@ const tree = {
 	copy(data, targetId, newItem) {
 
 		return data.flatMap((item) => {
-
 			if (item.id === targetId) {
 				item.copys = (item.copys || 0) + 1;
 
@@ -97,6 +98,8 @@ const tree = {
 				};
 
 				const newCopy = assignNewIds(newItem, `${newItem.id}-${item.copys}`);
+
+				localStorage.setItem('saved_menu', JSON.stringify(newCopy));
 
 				return [item, newCopy];
 			}

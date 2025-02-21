@@ -24,19 +24,32 @@
     background: rgba(9, 30, 66, 0.215);
 }
 
-.outerButtonStyles.menuHidden{
-	color: rgb(109, 109, 109);
-	background-color: rgba(59, 59, 59, 0.089);
-	border: 1px solid rgba(53, 53, 53, 0.037);
-	
-	i {
+.outerHoverStyles {
+
+	.outerButtonStyles.menuHidden{
 		color: rgb(109, 109, 109);
+		background-color: rgba(59, 59, 59, 0.089);
+		border: 1px solid rgba(53, 53, 53, 0.037);
+		
+		i {
+			color: rgb(109, 109, 109);
+		}
+	
+		& svg{
+			fill: rgb(109, 109, 109);
+			clip-path: none;
+		}
+
+	}
+	&:has(> .outerButtonStyles.menuHidden){
+
+		+div .outerButtonStyles{
+			color: rgb(109, 109, 109) !important;
+		background-color: rgba(59, 59, 59, 0.089)!important;
+		border: 1px solid rgba(53, 53, 53, 0.037)!important;
+		}
 	}
 
-	& svg{
-		fill: rgb(109, 109, 109);
-		clip-path: none;
-	}
 }
 
 

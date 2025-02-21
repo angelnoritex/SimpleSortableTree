@@ -35,6 +35,28 @@ function handleReparent(data, action, item) {
     return tree.insertAfter(result, desiredId, item);
 }
 
+
+/**
+ * Gets the child items of a target item.
+ * @param {TreeItem[]} data - The tree data.
+ * @param {string} targetId - The ID of the target item.
+ * @returns {TreeItem[]} The child items of the target item.
+ */
+function getChildItems(data, targetId) {
+	/**
+	 * An empty string is representing the root
+	 */
+	if (targetId === '') {
+		return data;
+	}
+
+	const targetItem = tree.find(data, targetId);
+	invariant(targetItem);
+
+	return targetItem.children;
+}
+
+
 /**
  * Reducer function for the tree data.
  * @param {TreeItem[]} data - The current tree data.
@@ -42,14 +64,20 @@ function handleReparent(data, action, item) {
  * @returns {TreeItem[]} The updated tree data.
  */
 const dataReducer = (data, action) => {
+
     const item = tree.find(data, action.itemId);
     if (!item) {
         return data;
     }
 
     let result;
-
+   
+    
     switch (action.type) {
+
+        case 'paste':
+            return tree.insertAtLast(data, action.item);
+
         case 'hide':
             return tree.hide(data, action.itemId);
 

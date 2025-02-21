@@ -1,7 +1,7 @@
 //import SortableTree from './v0'
 //import SortableTree from './Lucide'
 
-import React, {  useReducer } from "react"
+import React, {  useEffect, useReducer, useState } from "react"
 import SortableTree from "./AtlassianTree"
 import { treeStateReducer } from "./AtlassianTree/redux";
 import { createNodeKey } from "./AtlassianTree/redux";
@@ -31,12 +31,26 @@ export default function NewMenuTree({ selectedLink, treeData, saveMenu }) {
   const [TreeState, updateTreeState] = useReducer(treeStateReducer, { data: treeData, lastAction: null });
 
 
+  // Get the JSON string from localStorage
+  const [pasteable, setPasteable] = useState(null)
 
- 
+  const myObjectString = localStorage.getItem('saved_menu');
+  useEffect(()=>{
+    if(myObjectString){
+      const myObject = JSON.parse(myObjectString);
+      setPasteable(myObject)
+    }
+  },[myObjectString])
+
+  const handlePaste = ()=>{
+    updateTreeState({ type: 'paste', item:pasteable, itemId:TreeState.data.at(-1).id  })
+  }
 
   return <>
 
   <SortableTree state={TreeState} updateState={updateTreeState} />
+
+  {pasteable ? <button onClick={handlePaste} className="btn btn-primary">paste</button> : null}
 
 
 </>

@@ -6,7 +6,6 @@ import * as liveRegion from '@atlaskit/pragmatic-drag-and-drop-live-region';
 import { combine } from '@atlaskit/pragmatic-drag-and-drop/combine';
 import { monitorForElements } from '@atlaskit/pragmatic-drag-and-drop/element/adapter';
 
-import {  treeStateReducer } from './redux';
 import tree from './redux/actions';
 import { DependencyContext, TreeContext } from './tree-context';
 import TreeItem from './TreeItemComponent';
